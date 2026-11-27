@@ -1,3 +1,4 @@
+import { httpServerHandler } from "cloudflare:node";
 import { join } from "node:path";
 import { hostname } from "node:os";
 import { createServer } from "node:http";
@@ -67,6 +68,6 @@ function shutdown() {
 	process.exit(0);
 }
 
-server.listen({
-	port,
-});
+export default {
+  fetch: httpServerHandler({ port: 8080 })
+};
